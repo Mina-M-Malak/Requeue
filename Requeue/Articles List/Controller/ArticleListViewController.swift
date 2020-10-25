@@ -11,8 +11,8 @@ class ArticleListViewController: BaseViewController {
     
     @IBOutlet weak var articlesTableView: UITableView!
     
-    let viewModel = ArticleListViewModel()
-    let refresher = UIRefreshControl()
+    private let viewModel = ArticleListViewModel()
+    private let refresher = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +49,12 @@ class ArticleListViewController: BaseViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ArticleDetailsViewController , let article = sender as? Article {
+            vc.article = article
+        }
+    }
+    
     @objc func handleRefresher(){
         viewModel.fetchArticlesList()
     }
@@ -56,7 +62,9 @@ class ArticleListViewController: BaseViewController {
 
 // MARK:-  Article List TableViewDelegate
 extension ArticleListViewController: UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "articleDetails", sender: viewModel.articles[indexPath.row])
+    }
 }
 
 // MARK:- Article List TableViewDataSource

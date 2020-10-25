@@ -16,10 +16,26 @@ struct NYTimesResponse: Codable{
 }
 
 struct Article: Codable{
+    
+    var id: Int = 0
+    var type: String = ""
+    var byline: String = ""
     var url: String = ""
+    var publishedDate: String = ""
+    var updateDate: String = ""
     var title: String = ""
     var abstract: String = ""
+    var section: String = ""
+    var subsection: String = ""
+    var source: String = ""
     var media: [Media] = [Media]()
+    
+    
+    enum CodingKeys: String,CodingKey{
+        case url , title , abstract , media , id , type , byline , section , subsection , source
+        case publishedDate = "published_date"
+        case updateDate = "updated"
+    }
 }
 
 struct Media: Codable {

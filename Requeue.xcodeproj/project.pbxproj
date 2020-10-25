@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,7 @@
 		5272C7A92545F0AA00F3D507 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5272C7A72545F0AA00F3D507 /* ArticleTableViewCell.swift */; };
 		5272C7AA2545F0AA00F3D507 /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5272C7A82545F0AA00F3D507 /* ArticleTableViewCell.xib */; };
 		5272C7B22545F58C00F3D507 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5272C7AF2545F58C00F3D507 /* BaseViewController.swift */; };
+		5272C7CA2546056D00F3D507 /* ArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5272C7C92546056D00F3D507 /* ArticleDetailsViewController.swift */; };
 		BD7D3D022FECC346B91EA5BC /* Pods_Requeue_RequeueUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA91D6AD614F64A687387549 /* Pods_Requeue_RequeueUITests.framework */; };
 		F78ECA07AD54E7D2AB9934F1 /* Pods_RequeueTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF54B635292C85FE3FA6644 /* Pods_RequeueTests.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		5272C7A72545F0AA00F3D507 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		5272C7A82545F0AA00F3D507 /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
 		5272C7AF2545F58C00F3D507 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		5272C7C92546056D00F3D507 /* ArticleDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsViewController.swift; sourceTree = "<group>"; };
 		7FF54B635292C85FE3FA6644 /* Pods_RequeueTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RequeueTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA263E98BC43ECED372D873A /* Pods-RequeueTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequeueTests.debug.xcconfig"; path = "Target Support Files/Pods-RequeueTests/Pods-RequeueTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFB853D06F30076675626144 /* Pods-Requeue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Requeue.release.xcconfig"; path = "Target Support Files/Pods-Requeue/Pods-Requeue.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				5272C76A2545E3D600F3D507 /* Supporting Files */,
 				5272C7AE2545F58C00F3D507 /* Base */,
 				5272C7702545E5CC00F3D507 /* Articles List */,
+				5272C7C52546051D00F3D507 /* Article Details */,
 			);
 			path = Requeue;
 			sourceTree = "<group>";
@@ -298,6 +301,22 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		5272C7C52546051D00F3D507 /* Article Details */ = {
+			isa = PBXGroup;
+			children = (
+				5272C7C72546054800F3D507 /* Controller */,
+			);
+			path = "Article Details";
+			sourceTree = "<group>";
+		};
+		5272C7C72546054800F3D507 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5272C7C92546056D00F3D507 /* ArticleDetailsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		B69E2F41710A0791C8E992CF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,7 +327,6 @@
 				DA263E98BC43ECED372D873A /* Pods-RequeueTests.debug.xcconfig */,
 				3763A8F6A0E3E1E3D8288F24 /* Pods-RequeueTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -566,6 +584,7 @@
 				5272C78F2545EE2600F3D507 /* ArticleListViewModel.swift in Sources */,
 				5272C7A32545EF6900F3D507 /* ArticleModel.swift in Sources */,
 				5272C71F2545E33A00F3D507 /* SceneDelegate.swift in Sources */,
+				5272C7CA2546056D00F3D507 /* ArticleDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +764,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H857JH9CV2;
 				INFOPLIST_FILE = "Requeue/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -765,6 +785,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H857JH9CV2;
 				INFOPLIST_FILE = "Requeue/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

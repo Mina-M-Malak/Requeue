@@ -11,6 +11,11 @@ class ArticleListViewController: BaseViewController {
     
     @IBOutlet weak var articlesTableView: UITableView!
     
+    private var searchText: String = ""{
+        didSet{
+            articlesTableView.reloadData()
+        }
+    }
     private let viewModel = ArticleListViewModel()
     private let refresher = UIRefreshControl()
     
@@ -55,6 +60,21 @@ class ArticleListViewController: BaseViewController {
         }
     }
     
+    @IBAction func searchAction(_ sender: UIBarButtonItem) {
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.barTintColor = .appColor
+        searchController.searchBar.searchTextField.backgroundColor = .white
+        searchController.searchBar.searchTextField.tintColor = .black
+        if (!searchText.isEmpty){
+            searchController.searchBar.text = searchText
+        }
+        searchController.hidesNavigationBarDuringPresentation = false
+        self.present(searchController,animated: true, completion: nil)
+    }
+    
     @objc func handleRefresher(){
         viewModel.fetchArticlesList()
     }
@@ -70,12 +90,28 @@ extension ArticleListViewController: UITableViewDelegate{
 // MARK:- Article List TableViewDataSource
 extension ArticleListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.articles.count
+        return viewModel.getFilteredArticles(searchText: searchText).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
-        cell.article = viewModel.articles[indexPath.row]
+        cell.article = viewModel.getFilteredArticles(searchText: searchText)[indexPath.row]
         return cell
+    }
+}
+
+// MARK:- SearchBar Delegate
+extension ArticleListViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (!searchText.trimmingCharacters(in: .whitespaces).isEmpty){
+            self.searchText = searchText
+        }
+        else {
+            self.searchText = ""
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchText = ""
     }
 }

@@ -20,7 +20,7 @@ extension Bundle {
 
 extension UIColor {
     static var appColor: UIColor {
-        return UIColor(red: 67/256, green: 131/256, blue: 73/256, alpha: 1)
+        return UIColor(red: 80/255, green: 70/255, blue: 129/255, alpha: 1)
     }
 }
 

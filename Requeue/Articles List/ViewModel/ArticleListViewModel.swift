@@ -17,6 +17,11 @@ class ArticleListViewModel{
         }
     }
     
+    func getFilteredArticles(searchText: String) -> [Article]{
+        guard !searchText.trimmingCharacters(in: .whitespaces).isEmpty else { return articles}
+        return articles.filter({$0.title.lowercased().contains(searchText.lowercased())})
+    }
+    
     func fetchArticlesList(){
         loading?(true)
         Network.shared.fetch(with: Requeue.listArticles(period: "30", apiKey: "IeM1hWWs0y8mkj8AY80tUZxAuycOci8O"), model: NYTimesResponse.self) {[weak self] (Result) in

@@ -1,0 +1,6 @@
+framework module Pods_Requeue_RequeueUITests {
+  umbrella header "Pods-Requeue-RequeueUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

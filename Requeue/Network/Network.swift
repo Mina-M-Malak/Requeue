@@ -1,6 +1,6 @@
 //
 //  Network.swift
-//  TonesProject
+//  Requeue
 //
 //  Created by Mina Malak on 6/27/20.
 //  Copyright © 2020 Mina Malak. All rights reserved.
@@ -41,7 +41,7 @@ class Network{
     private var sessionTask:URLSessionDataTask?
     private init(){}
     
-    private func initRequest(_ clientRequest:Tons)->URLRequest {
+    private func initRequest(_ clientRequest:Requeue)->URLRequest {
         var request:URLRequest = clientRequest.request
         
         request.httpMethod = clientRequest.method.rawValue
@@ -107,7 +107,7 @@ class Network{
     
     
     
-    func fetch<T: Decodable>( with clientRequest: Tons, model: T.Type,qos:DispatchQoS.QoSClass = .default, completion: ((APIResult<T, APIError>)->())?) {
+    func fetch<T: Decodable>( with clientRequest: Requeue, model: T.Type,qos:DispatchQoS.QoSClass = .default, completion: ((APIResult<T, APIError>)->())?) {
         DispatchQueue.global(qos: .background).async {
             let request:URLRequest = self.initRequest(clientRequest)
             self.sessionTask = self.JSONTask(with: request, decodingModel: model.self) {[weak self] (result) in

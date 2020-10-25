@@ -1,42 +1,36 @@
 //
-//  Tons.swift
-//  TonsProject
+//  Requeue.swift
+//  Requeue
 //
 //  Created by Mina Malak on 6/27/20.
 //  Copyright © 2020 Mina Malak. All rights reserved.
 //
 
 import UIKit
-enum Tons {
-    case getProduct(offset: Int,limit: Int)
-    case updateCart(product: UpdateCartModel)
-    case getCart
+enum Requeue {
+    case listArticles(period: String,apiKey: String)
 }
 
-extension Tons: Endpoint {
+extension Requeue: Endpoint {
     var base: String {
-        return Bundle.main.tonsBaseURL
+        return Bundle.main.baseURL
     }
     
     var prefix: String {
-        return Bundle.main.apiPrefix
+        return "/"
     }
     
     var path: String {
         switch self {
-        case .getProduct:
-            return "products"
-        case .updateCart,.getCart:
-            return "cart"
+        case .listArticles(let period,_):
+            return "svc/mostpopular/v2/viewed/\(period).json"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .getProduct,.getCart:
+        case .listArticles:
             return .get
-        case .updateCart:
-            return .post
         }
     }
     
@@ -46,28 +40,13 @@ extension Tons: Endpoint {
     
     var queryItems: [URLQueryItem] {
         switch self {
-        case .getProduct(offset: let offset, limit: let limit):
-            return [URLQueryItem(name:"limit", value: "\(limit)"), URLQueryItem(name:"offset", value: "\(offset)")]
-        case .getCart:
-            guard let uuid = UIDevice.current.identifierForVendor?.uuidString else { return []}
-            return [URLQueryItem(name:"id", value: uuid)]
-        default:
-            return []
+        case .listArticles(_,let apiKey):
+            return [URLQueryItem(name:"api-key", value: apiKey)]
         }
     }
     
     var body: Data? {
-        switch self {
-        case .updateCart(let product):
-            do {
-                let jsonData = try JSONEncoder().encode(product)
-                return jsonData
-            }catch {
-                return nil
-            }
-        default:
-            return nil
-        }
+        return nil
     }
     
     var Cancellable : Bool {

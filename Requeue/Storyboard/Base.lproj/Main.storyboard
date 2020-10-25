@@ -29,6 +29,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="nOh-6n-Pae" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3RF-LH-hXl"/>
                             <constraint firstAttribute="bottom" secondItem="nOh-6n-Pae" secondAttribute="bottom" id="69e-Su-dlE"/>
@@ -276,6 +279,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rdv-sh-0Ie"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="xWh-nN-J3y" firstAttribute="top" secondItem="Rdv-sh-0Ie" secondAttribute="top" id="FAt-Jo-vHX"/>
                             <constraint firstAttribute="bottom" secondItem="xWh-nN-J3y" secondAttribute="bottom" id="Oxj-BZ-TgY"/>

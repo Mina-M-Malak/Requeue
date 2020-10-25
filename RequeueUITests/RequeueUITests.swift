@@ -26,9 +26,25 @@ class RequeueUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testSearch(){
+        
+        let app = XCUIApplication()
+        app.launch()
+        sleep(1)
+        app.navigationBars["Article List"].buttons["Search"].tap()
+        
+        let tKey = app.keys["T"]
+        tKey.tap()
+        
+        let rKey = app.keys["r"]
+        rKey.tap()
+        
+        let uKey = app.keys["u"]
+        uKey.tap()
+        app.buttons["search"].tap()
+        app.otherElements["PopoverDismissRegion"].tap()
     }
 
     func testLaunchPerformance() throws {
